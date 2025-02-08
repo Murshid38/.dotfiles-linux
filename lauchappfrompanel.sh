@@ -11,8 +11,8 @@ xdotool mousemove --screen 0 75 1059 click 1
 sleep 0.1  # Small delay to ensure the click registers
 
 # Move the mouse up slightly
-xdotool mousemove_relative -- 0 -10
-sleep 0.1  # Small delay
+# xdotool mousemove_relative -- 0 -10
+# sleep 0.1  # Small delay
 
 # Move back to the original position
 xdotool mousemove --screen $SCREEN $X $Y
