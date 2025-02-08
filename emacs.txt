@@ -1,3 +1,20 @@
+Youtube Channels
+
+emacsrocks
+distrotube
+Positron's Emacs Channel
+Mike Zamansky
+    
+shortcuts
+m-t transpose words
+c-t transpose characters
+c-x c-t transpose lines
+m-; comment
+yank-rectangle C-x r y
+
+Rename means moving and vice versa
+M-h for selecting the para
+    
 M-; comment (select and comment)
 C-x C-; comment-line    
 
