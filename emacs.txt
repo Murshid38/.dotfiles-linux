@@ -1,0 +1,4 @@
+M-; comment (select and comment)
+C-x C-; comment-line    
+
+C-h f show help for function
