@@ -22,3 +22,26 @@ C-h f show help for function
 
 C-x SPACE rectangle-mark-mode    
 C-x r N rectangle-number-lines
+
+C-u M-x for running functions with arguments.    
+
+replace-string function to replace strings
+query-replace function to replace strings with confirmation
+
+to install packages we can press i and press x. 
+
+we can know(and change) the custom config file using custom-file function.
+
+we can use a custom config file and load it.    
+(setq custom-file "~/.config/emacs-my-custom.el")
+(load custom-file)
+
+emacs lisp(also common lisp) is a lisp 2 (seperate namespaces for functions and variables. so can have same name for a function and a variable)
+lisp 1 languages only have one namespace for both functions and variables.
+
+we can use customize-variable function to set variable values
+
+C-x C-q for making dired editable.
+C-c C-c or C-x C-s when done, or C-c ESC to stop
+
+https://www.youtube.com/watch?v=81MdyDYqB-A 41 mins

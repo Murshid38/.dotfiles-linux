@@ -1,0 +1,16 @@
+linux mint
+
+xdotool
+while true; do xdotool getmouselocation; sleep 0.1; done
+
+#!/bin/bash
+# Move the mouse to the position of the second panel icon and click
+xdotool mousemove --screen 0 75 1059 click 1
+
+mysql -h 127.0.0.1 -P 3306 -u root -p <database>
+
+tlp
+
+google search not working in new wifi
+
+https://chatgpt.com/share/67b1f58c-5d64-8011-972d-7886ba5fc348

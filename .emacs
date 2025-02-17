@@ -146,7 +146,7 @@
 
 (defun run-js-region-display-output ()
   "Run the selected JavaScript region, or the whole buffer if no region is selected,
-   and display output in a right-side buffer if open."
+   and display output in a bottom-side buffer if open."
   (interactive)
   (let* ((script (if (use-region-p)  ;; Check if a region is selected
                      (buffer-substring-no-properties (region-beginning) (region-end))
@@ -162,7 +162,7 @@
         (erase-buffer) ;; Clear previous output
         (insert output)
         (goto-char (point-max)))
-      (display-buffer-in-side-window output-buffer '((side . right))))
+      (display-buffer-in-side-window output-buffer '((side . bottom))))
     (delete-file temp-file)))
 
 (defun run-c-region-display-output ()
@@ -208,11 +208,11 @@
           (delete-file temp-file)
           (delete-file temp-exec))))
 
-    (display-buffer-in-side-window output-buffer '((side . right)))))
+    (display-buffer-in-side-window output-buffer '((side . bottom)))))
 
 (defun run-cpp-region-display-output ()
   "Compile and run the selected C++ code, or the whole file if no region is selected,
-   using `g++` to generate an object file and execute it."
+   using g++ to generate an object file and execute it."
   (interactive)
   (let* ((is-region (use-region-p))
          (cpp-file (buffer-file-name))
@@ -253,7 +253,7 @@
           (delete-file temp-file)
           (delete-file temp-exec))))
 
-    (display-buffer-in-side-window output-buffer '((side . right)))))
+    (display-buffer-in-side-window output-buffer '((side . bottom)))))
 
 (defun run-java-region-display-output ()
   "Compile and run the Java file using `javac` and then execute the generated .class file.
@@ -303,8 +303,8 @@ If a region is selected, wraps the code inside a temporary `TempJavaClass` with 
           (delete-file temp-file)
           (delete-file (concat temp-class ".class")))))
 
-    (display-buffer-in-side-window output-buffer '((side . right)))))
- 
+    (display-buffer-in-side-window output-buffer '((side . bottom)))))
+
 (defun run-code-region ()
   "Run the selected code based on file extension."
   (interactive)
