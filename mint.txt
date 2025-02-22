@@ -14,3 +14,5 @@ tlp
 google search not working in new wifi
 
 https://chatgpt.com/share/67b1f58c-5d64-8011-972d-7886ba5fc348
+
+cinnamon maximus for hiding title bars.    
