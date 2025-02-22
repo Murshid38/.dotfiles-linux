@@ -45,3 +45,8 @@ C-x C-q for making dired editable.
 C-c C-c or C-x C-s when done, or C-c ESC to stop
 
 https://www.youtube.com/watch?v=81MdyDYqB-A 41 mins
+
+C-u C-SPC for go to the last marked place in the same buffer
+C-x C-SPC for go to the last marked place from any buffer   
+
+we can use goto-chg to mimic vims g; keybinding.    
