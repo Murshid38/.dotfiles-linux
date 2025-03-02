@@ -1,0 +1,169 @@
+{
+    "workbench.colorCustomizations": {
+        // "titleBar.activeBackground": "#391742",
+        // "titleBar.activeForeground": "#ffffff",
+        // "titleBar.activeBackground": "#fff",
+        // "titleBar.activeForeground": "#000",
+        // "activityBar.foreground": "#ffffff",
+        // "editorCursor.foreground": "#fff",
+        // "editorCursor.background": "#000",
+        // "terminalCursor.foreground": "#ffffff"
+        // "statusBar.background": "#333333"
+    },
+    "vim.incsearch": true,
+    "vim.useSystemClipboard": true,
+    "vim.useCtrlKeys": true,
+    "vim.hlsearch": false,
+    "vim.leader": " ",
+    "vim.handleKeys": {
+        "<C-p>": false,
+        "<C-f>": false,
+        "<C-q>": false
+    },
+    "vim.normalModeKeyBindingsNonRecursive": [
+        {
+            "before": [
+                "]",
+                "d"
+            ],
+            "commands": [
+                "editor.action.marker.next"
+            ]
+        },
+        {
+            "before": [
+                "]",
+                "d"
+            ],
+            "commands": [
+                "editor.action.marker.next"
+            ]
+        },
+        {
+            "before": [
+                "S-k"
+            ],
+            "commands": [
+                "editor.action.showDefinitionPreviewHover"
+            ]
+        },
+        {
+            "before": [
+                "<leader>",
+                "p",
+                "f"
+            ],
+            "commands": [
+                "git.pullFrom"
+            ]
+        },
+        {
+            "before": [
+                "<leader>",
+                "r"
+            ],
+            "commands": [
+                "workbench.action.openRecent"
+            ]
+        },
+        {
+            "before": [
+                "<leader>",
+                "o"
+            ],
+            "commands": [
+                "workbench.action.closeOtherEditors"
+            ]
+        }
+    ],
+    // "editor.fontFamily": "JetBrains Mono",
+    // "scm.inputFontFamily": "JetBrains Mono",
+    // "debug.console.fontFamily": "JetBrains Mono",
+    // "chat.editor.fontFamily": "JetBrains Mono",
+    // "editor.codeLensFontFamily": "JetBrains Mono",
+    // "notebook.output.fontFamily": "JetBrains Mono",
+    // "markdown.preview.fontFamily": "JetBrains Mono",
+    // "editor.inlayHints.fontFamily": "JetBrains Mono",
+    // "terminal.integrated.fontFamily": "JetBrains Mono",
+    // "editor.inlineSuggest.fontFamily": "JetBrains Mono",
+    "editor.fontSize": 13,
+    "editor.lineHeight": 22,
+    "editor.wordWrap": "on",
+    "editor.lineNumbers": "relative",
+    "extensions.experimental.affinity": {
+        "vscodevim.vim": 1
+    },
+    // AL
+    "alOutline.completionProviders": [
+        "VariableNamesWithType"
+    ],
+    "al.browser": "Firefox",
+    "security.workspace.trust.untrustedFiles": "open",
+    "al.algoSuggestedFolder": "E:\\local-projects",
+    "editor.stickyScroll.maxLineCount": 10,
+    "scm.showHistoryGraph": false,
+    "[al]": {
+        "editor.wordBasedSuggestions": "off",
+        "editor.suggestSelection": "first",
+        "editor.formatOnSave": true,
+        "editor.semanticHighlighting.enabled": true,
+        "editor.inlayHints.fontSize": 12
+    },
+    "workbench.layoutControl.enabled": false,
+    "window.commandCenter": false,
+    "security.allowedUNCHosts": [
+        "wsl.localhost"
+    ],
+    "al.enableCodeAnalysis": true,
+    "al.codeAnalyzers": [],
+    "linterCop.autoDownload": true,
+    "github.copilot.advanced": {
+        "authProvider": "github"
+    },
+    "git.enableSmartCommit": true,
+    "window.newWindowProfile": "Default",
+    "editor.minimap.scale": 3,
+    "editor.minimap.autohide": true,
+    "cmake.showOptionsMovedNotification": false,
+    "window.title": "${rootName}",
+    "git.confirmSync": false,
+    // "window.title": "${dirty}${activeEditorShort}${separator}${rootName}${separator}${profileName}${separator}${appName}"
+    "keyboard.dispatch": "keyCode",
+    "code-runner.executorMap": {
+        "javascript": "node",
+        // "php": "C:\\php\\php.exe",
+        "python": "python",
+        "perl": "perl",
+        // "ruby": "C:\\Ruby23-x64\\bin\\ruby.exe",
+        "go": "go run",
+        // "html": "\"C:\\Program Files (x86)\\Google\\Chrome\\Application\\chrome.exe\"",
+        // "java": "cd $dir && javac $fileName && java $fileNameWithoutExt",
+        "c": "cd $dir && gcc $fileName -o $fileNameWithoutExt && $dir$fileNameWithoutExt",
+        "cpp": "cd $dir && g++ $fileName -o $fileNameWithoutExt && $dir$fileNameWithoutExt"
+    },
+    "liveServer.settings.CustomBrowser": "chrome",
+    "editor.formatOnSave": true,
+    "files.autoSave": "onFocusChange",
+    "[html]": {
+        "editor.defaultFormatter": "esbenp.prettier-vscode"
+    },
+    "prettier.tabWidth": 4,
+    "liveServer.settings.donotVerifyTags": true,
+    "breadcrumbs.enabled": false,
+    "[javascript]": {
+        "editor.defaultFormatter": "esbenp.prettier-vscode"
+    },
+    "window.titleBarStyle": "native",
+    "editor.minimap.enabled": false,
+    "editor.quickSuggestionsDelay": 10,
+    "window.menuBarVisibility": "toggle",
+    "editor.guides.bracketPairs": "active",
+    "[jsonc]": {
+        "editor.defaultFormatter": "vscode.json-language-features"
+    },
+    "workbench.colorTheme": "Tokyo Night",
+    "workbench.activityBar.location": "hidden",
+    "workbench.editor.showTabs": "single",
+    "editor.scrollbar.vertical": "hidden",
+    "window.density.editorTabHeight": "compact",
+}
