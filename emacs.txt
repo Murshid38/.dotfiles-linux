@@ -50,3 +50,14 @@ C-u C-SPC for go to the last marked place in the same buffer
 C-x C-SPC for go to the last marked place from any buffer   
 
 we can use goto-chg to mimic vims g; keybinding.    
+
+learn elisp
+when learing elisp there is an upfront cost but it will save time later since we won't fiddle around only to break things 6 months from now.
+    
+reverse-region
+
+In Term Mode (M-x term or M-x ansi-term)
+----------------------------------------
+When in char mode (C-c C-j), use Emacs keybindings as above (M-r for history)
+When in line mode (C-c C-k), use terminal keybindings (C-r should work as in Bash)
+

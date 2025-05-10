@@ -22,13 +22,15 @@
 (scroll-bar-mode 0)
 (tool-bar-mode 0)
 (menu-bar-mode 0)
+(fringe-mode 0)
 
-(setq display-line-numbers-type 'visual)
+;; (setq display-line-numbers-type 'visual)
+(setq display-line-numbers-type 'relative)
 (global-display-line-numbers-mode 1)
 
 ;;default font
 ;(set-face-attribute 'default nil :font "DejaVu Sans Mono for Powerline-12")
-;(set-face-attribute 'default nil :font "JetBrains Mono-10")
+;(set-face-attribute 'default nil :font "JetBrains Mono-12")
 ;(set-face-attribute 'default nil :font "Code New Roman-12")
 ;(set-face-attribute 'default nil :font "Iosevka-12")
 ;(set-face-attribute 'default nil :font "Consolas-12")
@@ -85,21 +87,25 @@
  ;; If you edit it by hand, you could mess it up, so be careful.
  ;; Your init file should contain only one such instance.
  ;; If there is more than one, they won't work right.
- '(custom-enabled-themes '(modus-vivendi))
+ '(custom-enabled-themes '(monokai-pro))
+ '(custom-safe-themes
+   '("fb83a50c80de36f23aea5919e50e1bccd565ca5bb646af95729dc8c5f926cbf3" "c8b83e7692e77f3e2e46c08177b673da6e41b307805cd1982da9e2ea2e90e6d7" "b02eae4d22362a941751f690032ea30c7c78d8ca8a1212fdae9eecad28a3587f" "b6269b0356ed8d9ed55b0dcea10b4e13227b89fd2af4452eee19ac88297b0f99" "e3a1b1fb50e3908e80514de38acbac74be2eb2777fc896e44b54ce44308e5330" "65057902bcd51d84e0e28036f4759295e08f57b1ba94b9ae10a8d5ffde5f154f" default))
  '(font-use-system-font t)
- '(package-selected-packages '(exec-path-from-shell skewer-mode js2-mode simple-httpd)))
+ '(package-selected-packages
+   '(monokai-pro-theme goto-chg multiple-cursors exec-path-from-shell js2-mode))
+ '(tool-bar-mode nil))
 (custom-set-faces
  ;; custom-set-faces was added by Custom.
  ;; If you edit it by hand, you could mess it up, so be careful.
  ;; Your init file should contain only one such instance.
  ;; If there is more than one, they won't work right.
- '(default ((t (:family "DejaVu Sans Mono" :foundry "PfEd" :slant normal :weight regular :height 120 :width normal)))))
+ '(default ((t (:family "JetBrains Mono NL" :foundry "JB" :slant normal :weight regular :height 120 :width normal)))))
 
 ;(setq ediff-split-window-function 'split-window-horizontally)
 ;(split-window-horizontally)
 
-(global-hl-line-mode 1)
-(set-face-background 'hl-line "midnight blue")
+;; (global-hl-line-mode 0)
+;; (set-face-background 'hl-line "midnight blue")
 
 ; Smooth scroll
 (setq scroll-step 3)
@@ -109,9 +115,9 @@
 (setq undo-limit 20000000)
 (setq undo-strong-limit 40000000)
 
-(add-hook 'js2-mode-hook 'skewer-mode)
-(add-hook 'css-mode-hook 'skewer-css-mode)
-(add-hook 'html-mode-hook 'skewer-html-mode)
+;(add-hook 'js2-mode-hook 'skewer-mode)
+;(add-hook 'css-mode-hook 'skewer-css-mode)
+;(add-hook 'html-mode-hook 'skewer-html-mode)
 
 (require 'multiple-cursors)
 ;add a cursor to each line
@@ -146,7 +152,7 @@
 
 (defun run-js-region-display-output ()
   "Run the selected JavaScript region, or the whole buffer if no region is selected,
-   and display output in a bottom-side buffer if open."
+   and display output in a right-side buffer if open."
   (interactive)
   (let* ((script (if (use-region-p)  ;; Check if a region is selected
                      (buffer-substring-no-properties (region-beginning) (region-end))
@@ -162,7 +168,7 @@
         (erase-buffer) ;; Clear previous output
         (insert output)
         (goto-char (point-max)))
-      (display-buffer-in-side-window output-buffer '((side . bottom))))
+      (display-buffer-in-side-window output-buffer '((side . right))))
     (delete-file temp-file)))
 
 (defun run-c-region-display-output ()
@@ -208,7 +214,7 @@
           (delete-file temp-file)
           (delete-file temp-exec))))
 
-    (display-buffer-in-side-window output-buffer '((side . bottom)))))
+    (display-buffer-in-side-window output-buffer '((side . right)))))
 
 (defun run-cpp-region-display-output ()
   "Compile and run the selected C++ code, or the whole file if no region is selected,
@@ -253,7 +259,7 @@
           (delete-file temp-file)
           (delete-file temp-exec))))
 
-    (display-buffer-in-side-window output-buffer '((side . bottom)))))
+    (display-buffer-in-side-window output-buffer '((side . right)))))
 
 (defun run-java-region-display-output ()
   "Compile and run the Java file using `javac` and then execute the generated .class file.
@@ -303,7 +309,7 @@ If a region is selected, wraps the code inside a temporary `TempJavaClass` with 
           (delete-file temp-file)
           (delete-file (concat temp-class ".class")))))
 
-    (display-buffer-in-side-window output-buffer '((side . bottom)))))
+    (display-buffer-in-side-window output-buffer '((side . right)))))
 
 (defun run-code-region ()
   "Run the selected code based on file extension."
@@ -319,3 +325,34 @@ If a region is selected, wraps the code inside a temporary `TempJavaClass` with 
 (global-set-key (kbd "C-c C-c") 'run-code-region)
 
 (global-auto-revert-mode 1)
+
+(add-hook 'html-mode-hook
+          (lambda ()
+            (setq sgml-basic-offset 4)))
+
+;; goto-chg installed
+(global-set-key (kbd "C-M-,") 'goto-last-change)
+
+(global-set-key (kbd "C-c a") 'rectangle-number-lines)
+(global-set-key (kbd "C-c r") 'reverse-region)
+
+;; Function to run async shell commands silently with completion
+(defun my-inhibit-async-window (buffer &optional _)
+  "Prevent BUFFER from being displayed in a window."
+  'inhibit-window)
+
+(defun my-silent-async-shell-command (command)
+  "Run COMMAND asynchronously without displaying its buffer.
+Supports filename completion for commands."
+  (interactive
+   (list
+    (let ((initial-input ""))
+      ;; Use read-shell-command which supports completion
+      (read-shell-command "Shell command: " initial-input))))
+  
+  (let ((display-buffer-alist
+         (cons '("\\*Async Shell Command\\*" (my-inhibit-async-window))
+               display-buffer-alist)))
+    (async-shell-command command)))
+
+(global-set-key (kbd "C-c s") 'my-silent-async-shell-command)

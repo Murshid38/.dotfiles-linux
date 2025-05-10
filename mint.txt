@@ -16,3 +16,34 @@ google search not working in new wifi
 https://chatgpt.com/share/67b1f58c-5d64-8011-972d-7886ba5fc348
 
 cinnamon maximus for hiding title bars.    
+
+Look for an Installation Script
+ls
+Look for a file like install.sh, configure, or README.
+
+If there’s an installation script (install.sh), run:
+./install.sh
+    
+If there’s a configure script, you may need to do:
+./configure
+make
+sudo make install
+    
+If No Installer is Available
+Squeak typically includes a ready-to-run binary. Look for a squeak executable and run:
+./squeak
+    
+If it runs successfully, you can move it to /usr/local/bin for easier access:
+sudo mv squeak /usr/local/bin/
+    
+sudo find / -type f -name "bluej.jar" 2>/dev/null // to find files    
+
+mkdir -p ~/.fonts
+cp /path/to/your/font.ttf ~/.fonts/
+fc-cache -fv
+
+or for system wide
+sudo cp /path/to/font.ttf /usr/share/fonts/truetype/
+sudo fc-cache -fv
+    
+    
