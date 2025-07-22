@@ -1,0 +1,83 @@
+Instruction Set Architecture(ISA) or Architecture - family of CPUs(Processors) who supports same instructions.
+e.g. x86, x86_64(amd64), arm, arm64, sparc, ppc(Power PC), mips, risc-v
+
+init systems supported - choose one.
+1. OpenRC (Gentoos own)
+2. systemd
+
+choose a file system.
+
+can choose or remove features from system-wide level or package level or package group level using USE flags.
+
+gentoo avoids forcing users onto a specific system profile or desktop environment.
+
+The entire operating system can be tuned at a binary level via the mechanisms included in Portage's make.conf file
+
+init system - the first process that starts when linux computer boots up and this process starts all the other processes. always has the id of 1.
+- initializes hardwares and mounts file systems.
+- initializes other services like logging, networking, UI..
+- monitors and restarts services if they fail.
+- handles system shutdown and reboots.
+
+init system is what starts after BIOS/UEFI but before we login to our linux.
+
+systemd
+-------
+more than just an init system.
+de facto standard on many linux distributions today.
+uses unit files.
+introduces cgroups management - for resource isolation and managment, socket activation - for on-demand service starting, D-Bus integration.
+
+systemctl - command line tool for all aspects of system.
+binary log format - Journalctl
+
+wheel group
+-----------
+wheel means power users or priviledged users
+in some other distributions it can be referred in other names.(sudo group in linux mint, admin group for legacy reasons)
+why - security mechanism to allow users to perform commands on behalf of the root user.(run commands as root)
+
+refer: /etc/sudoers
+
+%wheel ALL=(ALL) ALL - means all the users in the wheel group can sudo commands as root.
+    
+sudo usermod -aG sudo(or wheel) user_name -> appends the user to sudo or wheel group	
+sudo usermod -G sudo(or wheel) user_name -> adds the user to sudo or wheel group and removes the users from other groups (don't do this)
+
+kernel
+------
+- talks to the hardware
+- manages resources (CPU, memory..)
+- making sure apps don't crash into each other 
+
+basically bridge and controller between software/apps and hardware. (apps needs to access hardware and vice versa)
+
+software -> hardware
+hardware -> software
+
+kernel does
+Process management     | Keeps track of running programs, schedules CPU time 
+Memory management      | Allocates and reclaims RAM                          
+Device management      | Talks to devices: keyboard, mouse, GPU, etc.        
+File system management | Opens, reads, writes files                          
+Security & Permissions | Prevents apps from accessing things they shouldn’t  
+
+custom kernel
+-------------
+
+can tweak, strip down, optmize kernel for our hardware
+in most other distros we get a bloated one-size-fits-all kernel(designed to work on every machine)
+
+boot process
+------------
+
+1. BIOS/UEFI starts the hardware(RAM, CPU, Storage..)
+2. Bootloader(e.g. GRUB) loads the linux kernel into memory(passes parameters if needed) and gives control to the kernel.
+3. Kernel then initializes memory management, process scheduler, device drivers...., mounts the root file system and then launches the init system
+4. Init system starts other processes(networking, login managment, graphical sessions...)
+
+refer
+----
+
+BIOS vs UEFI
+partition table styles(GPT, MBR...)

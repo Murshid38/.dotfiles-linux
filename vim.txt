@@ -1,0 +1,3 @@
+vi founder - bill joy at UCB(also the founder of BSD OS and Ex editor, csh, tsch) 
+
+first version of BSD is addon to original unix. not an alternative.

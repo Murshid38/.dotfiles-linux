@@ -1,0 +1,8 @@
+linux headers -> C header files for kernel, important to compile external kernel modules to compile them. like NVidia/AMD GPU drivers, VBox guest additions, wifi or proprietary drivers. and also helpful for building kernel aware apps and for debugging.
+
+vbox guest additions - additional drivers and applications to improve performance and integration of guest os.
+
+GPU drivers - A GPU driver is a piece of software that allows your operating system to communicate with your graphics card (GPU).
+The driver exposes APIs like OpenGL, Vulkan, DirectX to your system and apps.
+
+two nvidia gpu drivers - nvidia(proprieraty), nouveau(community, open source, limited accelration, no cuda)

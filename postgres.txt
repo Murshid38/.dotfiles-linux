@@ -1,0 +1,55 @@
+pg_ctl -D /var/lib/pgsql/16/data -l logfile start
+pg_ctl -D /var/lib/pgsql/16/data -l logfile stop
+
+initdb: warning: enabling "trust" authentication for local connections
+initdb: hint: You can change this by editing pg_hba.conf or using the option -A, or --auth-local and --auth-host, the next time you run initdb.
+
+sudo -u postgres 
+
+later change password
+---------------------
+sudo -i -u postgres
+psql
+\password postgres to change password 
+
+sudo su - postgres
+sudo -i -u postgres
+what are the differences?
+
+psql - a client to interact with postgresql database server, use it after 'sudo -i -u postgres'
+
+added in postgresql.conf located in /var/lib/pgsql/16/data
+listen_addresses = '*'      # or specific VM IP (e.g. '192.168.56.2')
+
+restart
+add in pg_hba.conf located in /var/lib/pgsql/16/data
+host    all             postgres        192.168.1.0/24          scram-sha-256
+
+post no: 5432
+
+why?
+# Switch to the 'postgres' user
+sudo su - postgres (- is shorthand for --login) -> run 'su - postgres' as super user.
+or 
+sudo -i -u postgres -> tells sudo to run the command as postgres and give initial login (-i) for that user.
+
+
+# Initialize the database cluster. The -D flag specifies the data directory.
+what is? initdb -D /var/lib/pgsql/14/data
+
+initdb initializes the db structure(necessary directories and files) in that particular directory. like building an empty book library.
+default databases created because of the initdb command
+template1 - master copy, our dbs will copy from this template
+template0 - to fix if template1 gets corrupted
+postgres - default database for administration tasks
+
+The /var directory is for files whose content is expected to change continuously during the normal operation of the system. This includes things like system logs (/var/log), mail spools, and most importantly, the data managed by services like databases.
+
+The subdirectory /var/lib is specifically designated for "state information" from applications. Your PostgreSQL database is the persistent state of the postgresql service. Therefore, according to the Linux standard, /var/lib/pgsql is the correct and logical place for it to live.
+
+buggy_ecommerce_site
+site_admin - buggyadmin12#
+
+CREATE DATABASE photog_site;
+CREATE USER photog_user WITH PASSWORD 'choose-a-strong-password';
+GRANT ALL PRIVILEGES ON DATABASE photog_site TO photog_user;

@@ -20,7 +20,7 @@ C-x C-; comment-line
 
 C-h f show help for function
 
-C-x SPACE rectangle-mark-mode    
+C-x SPACE rectangle-mark-mode
 C-x r N rectangle-number-lines
 
 C-u M-x for running functions with arguments.    
@@ -61,3 +61,4 @@ In Term Mode (M-x term or M-x ansi-term)
 When in char mode (C-c C-j), use Emacs keybindings as above (M-r for history)
 When in line mode (C-c C-k), use terminal keybindings (C-r should work as in Bash)
 
+C-x SPACE rectangle-mark-mode and C-t for string-rectangle

@@ -1,3 +1,4 @@
+;; autoloaded, but requiring the package management functions package just in case
 (require 'package)
 
 ;; Add MELPA to the package archives
@@ -5,7 +6,10 @@
 
 ;; Initialize the package system (this is typically done once)
 (package-initialize)
-                                        ;
+
+(unless package-archive-contents
+  (package-refresh-contents))
+
 ;move to trash
 (setq-default delete-by-moving-to-trash t)
 
@@ -17,8 +21,6 @@
 ;(add-to-list 'default-frame-alist '(width . 80))
 
 ;change below to 0 to hide menu and tool bar
-;(tool-bar-mode 0)
-;(menu-bar-mode 0)
 (scroll-bar-mode 0)
 (tool-bar-mode 0)
 (menu-bar-mode 0)
@@ -29,11 +31,7 @@
 (global-display-line-numbers-mode 1)
 
 ;;default font
-;(set-face-attribute 'default nil :font "DejaVu Sans Mono for Powerline-12")
 (set-face-attribute 'default nil :font "JetBrains Mono-12")
-;(set-face-attribute 'default nil :font "Code New Roman-12")
-;(set-face-attribute 'default nil :font "Iosevka-12")
-;(set-face-attribute 'default nil :font "Consolas-12")
 
 ;;disable the error sound
 (setq visible-bell t)
@@ -44,7 +42,7 @@
 ;; Define M-h to help  ---  please don't add an extra ' after help!
 ;(global-set-key "\M-h" 'help)
 
-;setting single escape key instead of thrice 
+;setting single escape key instead of thrice
 ;(global-set-key (kbd "<escape>")      'keyboard-escape-quit)
 
 ; dired
@@ -160,7 +158,7 @@ Supports filename completion for commands."
     (let ((initial-input ""))
       ;; Use read-shell-command which supports completion
       (read-shell-command "Async Shell command: " initial-input))))
-  
+
   (let ((display-buffer-alist
          (cons '("\\*Async Shell Command\\*" (my-inhibit-async-window))
                display-buffer-alist)))
@@ -211,7 +209,7 @@ Supports filename completion for commands."
 
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
-;; C/C++ code runner 
+;; C/C++ code runner
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;; Add this global variable at the top of your code
 (defvar my-last-compiled-executable nil
@@ -271,7 +269,7 @@ Returns a list with executable file path and compile command."
            ;; Get file extension and check explicitly
            (file-ext (file-name-extension source-file))
            (is-cpp (and file-ext
-                        (member (downcase file-ext) 
+                        (member (downcase file-ext)
                                 '("cpp" "cxx" "cc" "c++" "hpp" "hxx" "h++"))))
            (compiler (if is-cpp "g++" "gcc"))
            ;; GCC/G++ flags: -g for debug, -Wall for all warnings, -Wextra for more warnings
@@ -378,7 +376,7 @@ Uses the globally stored `my-last-compiled-executable`."
 (let ((java-home (or (getenv "JAVA_HOME")
                     "/opt/java/jdk-21.0.6"))) ; Default path, modify if needed
   (when (file-directory-p java-home)
-    (setenv "PATH" (concat (getenv "PATH") ":" 
+    (setenv "PATH" (concat (getenv "PATH") ":"
                           java-home "/bin"))
     (setq exec-path (append exec-path (list (concat java-home "/bin"))))))
 
@@ -532,7 +530,7 @@ Uses the globally stored `my-last-compiled-java-class` and `my-last-compiled-jav
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
-;; JS code runner 
+;; JS code runner
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;; TODO: not compilation
 ;; 1. Ensure NODE_HOME in PATH

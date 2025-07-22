@@ -1,0 +1,78 @@
+* Init System
+
+(by default)
+slackware uses BSD style init (or SysVinit style) system. start scripts are found in /etc/rc.d/
+FreeBSD uses BSD style init system (or SysVinit style)
+mint uses systemd
+
+* Processes
+
+PS - process status 
+
+| Option      | Meaning                                        |
+| ----------- | ---------------------------------------------- |
+| `-e` / `-A` | Show all processes                             |
+| `-u`        | Show user/owner of process                     |
+| `-x`        | Show even processes not attached to a terminal |
+| `-f`        | Full-format listing (with parent PID)          |
+| `--forest`  | Tree-like hierarchy (with `-f`)                |
+
+----------------------------------------------------------------------------
+.bash_profile, .bash_login , .profile(/etc/profile, ) are read if bash is running as login shell(tty, ssh..)
+
+in login via ssh (it's a login shell)
+Bash sees -bash and reads these files in order, using the first one it finds:
+
+~/.bash_profile
+~/.bash_login
+~/.profile
+
+1. Login Shell (e.g., ssh, su –, tty login)
+Runs as a login shell
+/etc/profile
+Then one of: ~/.bash_profile, ~/.bash_login, or ~/.profile
+Only the first one found is used; the rest are ignored
+
+2. Interactive Non‑Login Shell (e.g., opening a new terminal window in GUI)
+Does not run /etc/profile or login files
+Reads only ~/.bashrc
+
+3. Non‑Interactive Shell (e.g., running a script)
+Reads BASH_ENV, not .bashrc or login files
+
+if we login using tty and ssh and gets a prompt to be interacive then it's a interactive login shell. then bash reads /etc/profile and .bash_profile.
+
+if we use graphical desktop environment terminal that's an interactive shell not login shell -> .bashrc read if bash is running as interactive shell
+
+if bash is invoked to run a script without no terminal or user input(e.g. bash myscript.sh, echo "Hi Script" | bash, cron jobs running scripts) then no config files will be sourced by default. if we want, we have to source .bashrc inside the script file.
+-------------------------------------------------------------------------------------------
+
+also, pulse audio, JACK audio backends
+
+what is tarballs, archives, compressed files and differences?
+
+change password
+sudo passwd username
+
+/usr/bin/go and /usr/local/go/bin the difference?
+
+* Linux Commands
+
+mkdir -p -> -p make sure parent directories created automatically. if already exists no errors.
+echo "Hello, World" > test.txt -> adds "Hello, World" to a file called test.txt as the first line(we can use >> for redirection too, not the otherway around)
+echo "Hello, World 2" >> test.txt -> appends "Hello, World 2" to a file called test.txt as second line
+
+* Symlinks
+this path is a symlink ->(to) this path 
+
+* Refer
+
+find, locate, which, grep...
+backup(with i..)
+file system
+what are .so files
+tmux
+SELinux or AppArmor
+
+/var/log/packages/ ?
+ls /var/log/packages/ | grep -E 'mysql|mariadb'

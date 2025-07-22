@@ -47,3 +47,22 @@ sudo cp /path/to/font.ttf /usr/share/fonts/truetype/
 sudo fc-cache -fv
     
     
+sudo apt purge '^mate-' '^caja' '^marco' '^atril' '^engrampa' '^eom' '^pluma' '^mate-terminal' '^mozo' 'mate-desktop-environment' 'mate-core' 'mate-utils' 'mate-applets' 'mate-panel' 'mate-session-manager' 'mate-settings-daemon' 'mate-power-manager' 'mate-screensaver' 'mate-polkit' 'libmate*' -y
+sudo apt autoremove --purge -y
+sudo apt clean
+
+sudo apt install --reinstall slick-greeter lightdm-settings
+
+apps and tools
+--------------
+freedowndload manager
+copyq
+virtualbox
+kitty
+vscode
+    
+sudo apt install linux-headers-$(uname -r)
+sudo apt install power-profiles-daemon
+sudo apt install emacs
+sudo apt install vim
+sudo apt install build-essentials

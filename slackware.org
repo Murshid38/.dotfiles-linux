@@ -1,0 +1,81 @@
+* package management
+
+core tools
+pkgtools -> installpkg, removepkg, upgradepkg, makepkg, explodepkg.. for .tgz files(standard slackware package file format)
+pkgtool wrapper
+slackpkg - provides a mirror
+
+Linux File System Standard?
+
+what slackpkg update does?
+why at /etc/inittab run level changed to 3 to 4?
+
+adduser murshid
+groups recommended: wheel,users,audio,video,cdrom,plugdev
+
+passwd murshid
+
+visudo
+%wheel  ALL=(ALL)       ALL
+
+userdel username
+
+ps -u username
+
+optional if deleting
+killall -u murshid           # stop any processes
+userdel -f -r murshid        # delete account + home + mail
+find / -user murshid -exec rm -r {} + # remove any stray files
+
+usermod -aG apache murshid // add to wheel group
+
+* Services
+
+we have to give execute permission to services before running them.
+simply by enabling execution of rc file we enables start on boot.
+
+check if sshd is running -> ps aux | grep sshd
+check if it's listening in the configured port mostly 22 -> netstat -tulnp | grep sshd    
+
+
+* Slackbuilds
+
+create a directory - mkdir -p /tmp/slackbuilds 
+Download the tarball file
+extract it 
+./Slackbuildfile
+
+DOWNLOAD="https://secure.php.net/distributions/php-5.6.30.tar.xz"
+
+Libraries have been installed in:
+   /tmp/SBo/php-7.4.27/ext/pdo_pgsql/modules
+
+If you ever happen to want to link against installed libraries
+in a given directory, LIBDIR, you must either use libtool, and
+specify the full pathname of the library, or use the `-LLIBDIR'
+flag during linking and do at least one of the following:
+   - add LIBDIR to the `LD_LIBRARY_PATH' environment variable
+     during execution
+   - add LIBDIR to the `LD_RUN_PATH' environment variable
+     during linking
+   - use the `-Wl,--rpath -Wl,LIBDIR' linker flag
+   - have your system administrator add LIBDIR to `/etc/ld.so.conf'
+
+See any operating system documentation about shared libraries for
+more information, such as the ld(1) and ld.so(8) manual pages.
+----------------------------------------------------------------------
+
+Build complete.
+Don't forget to run 'make test'.
+
+Installing shared extensions:     /tmp/SBo/package-php-pgsql//usr/lib64/php/extensions/
+/tmp/SBo/php-7.4.27
+cp: cannot stat 'ext/pgsql/README': No such file or directory
+
+
+/sudo::/srv/httpd/htdocs/index.php
+
+ls -ld /srv/httpd/htdocs/buggy_ecommerce_site // find the group this directory belong to in the 4 column of the results
+
+sudo chgrp -R www-data /srv/httpd/htdocs/buggy_ecommerce_site
+sudo chown -R murshid:apache /srv/httpd/htdocs/buggy_ecommerce_site

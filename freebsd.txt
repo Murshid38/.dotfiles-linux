@@ -1,0 +1,33 @@
+pw groupmod video -m username 
+
+freebsd also supports linux applications
+
+Vulkan, directx, OpenGL -> Graphics APIs given by the graphics drivers to talk to the graphics card.
+
+OpenGL - cross platform e.g. blender
+Vulkan - cross platform (newer library) e.g. Unreal Engine
+DirectX - Windows games
+
+i915 - kernel driver for Intel integrated GPUs
+iris or i965 - User space graphics driver for Intel integrated GPUs
+
+above two open sources drivers are provided by Mesa(a driver stack, collection of open source graphic drivers that implements OpenGL,Vulkan...) for linux Intel/AMD GPUs. 
+
+Services
+--------
+uses BSD style init scripts as init system.(rc scripts and configuration) 
+
+main config file is in /etc/rc.conf to enable which services to start at boot.
+
+enable sshd at boot -> sudo sysrc sshd_enable=YES
+
+sudo service sshd start
+
+check status -> service sshd status
+
+see if it's listening -> sockstat -4 -l | grep ssh
+should see something like this -> root     sshd     1234  3  tcp4   *:22 *:*
+
+checking firewall if any
+sudo ipfw list     # If using ipfw
+sudo pfctl -sr     # If using pf (Packet Filter)
