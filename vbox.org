@@ -1,0 +1,187 @@
+creating a host-only adapter in virtualbox.
+-------------------------------------------
+
+VBoxManage hostonlyif create
+
+VBoxManage hostonlyif ipconfig vboxnet0 --ip 192.168.56.1 --netmask 255.255.255.0
+
+running a vm headless
+---------------------
+VBoxManage startvm "Your_VM_Name" --type headless
+VBoxManage controlvm "Your_VM_Name" poweroff
+
+exploring guest properties
+--------------------------
+VBoxManage guestproperty get "VM_NAME" "/VirtualBox/GuestInfo/Net/0/V4/IP"
+vboxmanage guestproperty enumerate "FreeBSD"
+
+# Access the VM(in VirtuaBox) from host in local network
+settings -> Network -> Host-Only Adapter
+
+select vboxnet0
+if not found -> (in terminal) VBoxManage hostonlyif create
+confirm by -> VBoxManage list hostonlyifs
+
+# Setting ip address range for host-only adapter 
+VBoxManage hostonlyif ipconfig vboxnet0 --ip 192.168.56.1 --netmask 255.255.255.0
+
+# Access the VM(in VirtuaBox) from other devices in local network
+
+settings -> Network -> Bridged Adapter
+ip addr
+
+# Access the VM(in VirtuaBox) from other devices in outside network
+
+settings -> Network -> NAT Adapter
+Advanced -> port forwarding
+
+add a rule
+Protocol: TCP
+Host Port: 8080 (or any open port)
+Guest IP: (Leave blank)
+Guest Port: 80 (or the port your server runs on)
+
+can access the server using: http://localhost:8080
+
+Networking Modes
+----------------
+
+NAT(default) - VM will act like it's behind a router(virtual box will act like the router), vm will host internet connection to access internet. host can't connect to that VM directly like SSH. if we want to connect we need to setup port forwarding.
+
+bridged - guest VMs and host will be like a in LAN network, so all of them can interact with each other. VMs will get IP addresses in the routers range. easy to ssh into from any device in the same network.
+
+host only - host and guest vm will be like in a private network. but only host can access the internet. (vm can access internet using a second adapter if needed)
+
+108 - slackware
+124 - mint
+197 - freebsd
+
+* Snapshots
+
+A VirtualBox snapshot is like a save point in a video game. It captures the exact state of your virtual machine (VM) at a specific moment in time, allowing you to return to that exact state later, no matter what changes you make.
+
+---
+
+### How Snapshots Work: The "Transparent Overlay" Method
+
+The way VirtualBox does this is quite clever. Imagine your virtual hard disk is a piece of paper with your operating system written on it.
+
+1.  When you take a snapshot 📸: VirtualBox takes your original virtual disk file (`.vdi`) and essentially freezes it, marking it as "read-only." It will never be changed again.
+2.  A new "overlay" is created: VirtualBox then creates a brand new, smaller disk file. Think of this as a transparent sheet that you place on top of your original paper.
+3.  Changes are written to the overlay: From that moment on, every single change you make to the VM—installing a program, deleting a file, changing a setting—is written onto this new transparent sheet. The original paper underneath remains untouched.
+
+When you are running the VM, VirtualBox merges the view of the original disk and the overlay disk so it looks like one seamless system to you.
+
+---
+
+### Do They Take Additional Space?
+
+Yes, absolutely. The snapshot file (the transparent overlay) starts very small, but it grows in size every time you make a change to the virtual machine.
+
+If you install a 1GB application, the snapshot file will grow by about 1GB. Here’s the counter-intuitive part: if you delete a 500MB file from your VM's desktop, the snapshot file on your host computer will actually get bigger, because "deleting the file" is just another change that needs to be written down on the overlay.
+
+A chain of many snapshots can end up consuming a very large amount of disk space.
+
+---
+
+### What Deleting a Snapshot Means: The Merge 🤝
+
+This is the most misunderstood part for beginners. Deleting a snapshot does not mean losing your work. Instead, it means you are merging the changes into the parent disk.
+
+Think back to our analogy:
+ "Deleting" the snapshot is like taking the changes written on your transparent overlay and permanently writing them onto the original paper underneath.
+ VirtualBox reads all the changes from the snapshot file and applies them to the frozen, original disk file.
+ Once the merge is complete, the overlay (the snapshot file) is no longer needed and is deleted from your host computer's hard drive.
+
+The result is that your main virtual disk is now up-to-date with the state of the snapshot you just deleted. The only thing you lose is the ability to go back to that specific "save point."
+
+---
+
+### Key Takeaways for a Beginner
+
+Snapshots are for temporary safety, not long-term backups. They are perfect for when you're about to try something risky, like installing strange software or changing a critical system setting.
+They consume disk space. Be mindful of how many snapshots you have, as they can quickly fill up your hard drive.
+Deleting a snapshot merges your data. You won't lose your current state, but you will lose your "save point" history.
+Regularly merge (delete) old snapshots that you no longer need to reclaim disk space and keep your VM running efficiently.
+
+Snapshots do not take up the full space of the VM. They start small and only store the changes you make after taking the snapshot.
+
+Here’s a practical example using your 30GB base VM.
+
+### Space Consumption Example
+
+Imagine this sequence of events:
+
+1.  Base VM: You start with your 30GB virtual disk (`Base.vdi`).
+2.  Take Snapshot 1: You install a 5GB application. The original `Base.vdi` is frozen. A new file, `Snap1.vdi`, is created and grows to about 5GB.
+     Total space used: 30GB (Base) + 5GB (Snap1) = 35GB.
+3.  Take Snapshot 2: You delete the 5GB app and install a different 8GB app. `Snap1.vdi` is now frozen. A new file, `Snap2.vdi`, is created. It stores the "delete" action and the new 8GB app, so it grows to about 8GB.
+     Total space used: 30GB (Base) + 5GB (Snap1) + 8GB (Snap2) = 43GB.
+4.  Take Snapshot 3 (Current State): You download and create 2GB of new files. `Snap2.vdi` is frozen. A new file, `Snap3.vdi`, is created and grows to 2GB.
+     Final total space: 30GB (Base) + 5GB (Snap1) + 8GB (Snap2) + 2GB (Snap3) = ~45GB.
+
+As you can see, the total space used is the sum of the base disk and all the snapshot files.
+
+---
+
+### What Happens When You Delete Snapshots
+
+"Deleting" a snapshot merges its data. What it merges with depends on its position in the chain.
+
+#### Deleting the Last Snapshot (Snapshot 3)
+
+Process: This is the simplest case. The changes from Snapshot 3 are merged forward into its parent, Snapshot 2.
+Result: The `Snap3.vdi` file (2GB) is deleted. The `Snap2.vdi` file now contains its original changes plus the changes from Snapshot 3. You can no longer go back to the state of Snapshot 3, and your current state is now Snapshot 2.
+
+#### Deleting the First Snapshot (Snapshot 1)
+
+Process: The changes from Snapshot 1 are merged backward into the Base Disk.
+Result: The `Snap1.vdi` file (5GB) is deleted. The main `Base.vdi` file is modified to include these changes. Snapshot 2, which used to depend on Snapshot 1, now depends directly on the newly modified Base Disk. You have lost the ability to revert to the state of Snapshot 1.
+
+#### Deleting the Middle Snapshot (Snapshot 2)
+
+Process: This is the most complex. The changes from Snapshot 2 are merged forward into its child, Snapshot 3. VirtualBox essentially injects the contents of Snapshot 2 into Snapshot 3.
+Result: The `Snap2.vdi` file (8GB) is deleted. The `Snap3.vdi` file grows larger as it now contains its own changes plus all the changes from Snapshot 2. The chain is repaired so that Snapshot 1 now points directly to the new, larger Snapshot 3. You can no longer revert to the state of Snapshot 2.
+
+The reason the space isn't calculated as `8GB - 5GB = 3GB` is because a snapshot file is not a mini hard drive; it is a logbook of changes. It only ever records new actions; it never goes back to erase old ones.
+
+Think of it like this:
+
+1.  The Parent Snapshot (`Snap1.vdi`) is Frozen: Once you take Snapshot 2, the `Snap1.vdi` file becomes read-only. It will forever contain that 5GB application. It cannot be touched or changed.
+
+2.  `Snap2.vdi` Records What's New: Now, working in your "current" state (Snapshot 2), you perform two actions:
+
+     Action 1: "Delete the 5GB app"
+         Your VM doesn't go back into the `Snap1.vdi` file to erase the 5GB of data. That's impossible because it's frozen.
+         Instead, it writes a new entry into the `Snap2.vdi` logbook that says: "The data blocks where the 5GB app lived are now marked as empty and available for use." This log entry itself takes up a small amount of space.
+
+     Action 2: "Install the 8GB app"
+         Your VM writes another new entry into the `Snap2.vdi` logbook. It writes the entire 8GB of the new application into new, empty blocks. This adds 8GB to the file.
+
+### The Final Result for `Snap2.vdi`
+
+The `Snap2.vdi` file doesn't contain the net result of your work. It contains the history of your work.
+
+Therefore, the size of `Snap2.vdi` is:
+(The small amount of data for the "delete" record) + (The 8GB of data for the new app) = ~8GB
+
+### The Key Takeaway
+
+A snapshot chain never forgets. The entire purpose of `Snap1.vdi` is to preserve the ability to go back to a time when that 5GB application existed. If `Snap2.vdi` could reach back and erase data from its parent, the entire snapshot concept would break.
+
+So, the rule is: Any action you take in a snapshot, including deleting files, adds new data to the current snapshot file. The old data remains untouched in the parent snapshot files.
+
+When you choose to "delete all snapshots," VirtualBox doesn't just blindly add up all the snapshot files. Its goal is to make your single Base Disk look exactly like your current state.
+Let's break down why you get a 38GB VDI as a result:
+Your Current State: At the end of Snapshot 2, the virtual machine's file system contains the Base OS and the new 8GB application. The 5GB application from Snapshot 1 has been deleted and is no longer part of the current running system.
+The "Smart" Merge: When you delete the snapshots, VirtualBox processes the chain of changes to calculate the net result:
+It sees that Snapshot 1 said, "Add the 5GB app."
+Then, it sees that Snapshot 2 said, "Delete the 5GB app" and "Add the 8GB app."
+VirtualBox understands that the "add 5GB" and "delete 5GB" actions cancel each other out. The 5GB app doesn't exist in the final state, so its data doesn't need to be merged into the Base Disk.
+The Final Calculation: The only permanent change that needs to be applied to the Base Disk is the addition of the 8GB application.
+
+Original Base Disk: 30GB
+Net Change to Merge: + 8GB
+Final VDI Size: 38GB
+
+After the process is complete, the Snap1.vdi and Snap2.vdi files will be deleted, leaving you with a single, updated 38GB Base.vdi file and no "save points" to go back to.
