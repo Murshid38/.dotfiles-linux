@@ -1,3 +1,8 @@
+kali
+kali
+
+sudo apt update && sudo apt full-upgrade -y
+
 linux headers -> C header files for kernel, important to compile external kernel modules to compile them. like NVidia/AMD GPU drivers, VBox guest additions, wifi or proprietary drivers. and also helpful for building kernel aware apps and for debugging.
 
 vbox guest additions - additional drivers and applications to improve performance and integration of guest os.

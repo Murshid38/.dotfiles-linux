@@ -1,0 +1,97 @@
+* Searching and Replacing
+
+isearch-forward - C-s - start from the pointer at current position forward
+isearch-backward - C-r - start from the pointer at current position backward
+
+use M-e to edit the search string
+use C-m to land on the cursor position. 
+alternatively we can use emacs keybindings for movement to land on somewhere in the word too. for e.g. M-b. (any movement)
+after successfully landed mark will be saved where the search is started. 
+we can search again the same word again after *successful* search using C-s C-s. C-r C-r for backwards.
+
+isearch-forward-regexp - C-M-s - start from the pointer at current position forward regex 
+isearch-backward-regexp - C-M-r - start from the pointer at current position backward regex
+other than Meta included all the functionalities works same as C-s and C-r.
+
+occur
+-----
+M-s o - produces a standalone buffer with matching results
+we can use 'n' or 'p' in occur buffer to move with the results.
+
+the default value(last search value) will be there when we press M-s o. we can edit it by bringing it forward using M-p or M-n.
+
+even from isearch or isearch regexp, we can feed the results of the isearch to an occur buffer using M-s o.
+
+* Movement
+
+M-m back-to-indentation
+
+* shortcuts
+M-t transpose words
+C-t transpose characters
+C-x C-t transpose lines
+M-; comment
+yank-rectangle C-x r y
+
+Rename means moving and vice versa
+M-h for selecting the para
+    
+M-; comment (select and comment)
+C-x C-; comment-line    
+
+C-h f show help for function
+
+C-x SPACE rectangle-mark-mode
+C-x r N rectangle-number-lines
+
+C-u M-x for running functions with arguments.    
+
+replace-string function to replace strings
+query-replace function to replace strings with confirmation
+
+to install packages we can press i and press x. 
+
+we can know(and change) the custom config file using custom-file function.
+
+we can use a custom config file and load it.    
+(setq custom-file "~/.config/emacs-my-custom.el")
+(load custom-file)
+
+emacs lisp(also common lisp) is a lisp 2 (seperate namespaces for functions and variables. so can have same name for a function and a variable)
+lisp 1 languages only have one namespace for both functions and variables.
+
+we can use customize-variable function to set variable values
+
+C-x C-q for making dired editable.
+C-c C-c or C-x C-s when done, or C-c ESC to stop
+
+https://www.youtube.com/watch?v=81MdyDYqB-A 41 mins
+
+C-u C-SPC for go to the last marked place in the same buffer
+C-x C-SPC for go to the last marked place from any buffer   
+
+we can use goto-chg to mimic vims g; keybinding.    
+
+learn elisp
+when learing elisp there is an upfront cost but it will save time later since we won't fiddle around only to break things 6 months from now.
+    
+reverse-region
+C-x SPACE rectangle-mark-mode and C-t for string-rectangle
+
+* Term Mode
+
+M-x term or M-x ansi-term
+When in char mode (C-c C-j), use Emacs keybindings as above (M-r for history)
+When in line mode (C-c C-k), use terminal keybindings (C-r should work as in Bash)
+
+* Youtube Channels
+
+https://www.youtube.com/@protesilaos
+https://www.youtube.com/@emacsrocks
+https://www.youtube.com/@DistroTube
+https://www.youtube.com/@Positron-gv7do
+https://www.youtube.com/@mzamansky
+
+* Videos
+
+Emacs: search and replace basics https://www.youtube.com/watch?v=f2mQXNnChwc - 21 mins

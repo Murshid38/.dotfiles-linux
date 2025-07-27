@@ -1,0 +1,8 @@
+* wildcards
+
+'*' - all characters (0 or more)
+. - any characters
+
+* useful ones
+
+A.*?B - to match anything in between A to B
