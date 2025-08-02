@@ -23,7 +23,6 @@ Before you even log into the AWS console, you need to master the tools and conce
      What to learn: Master `git`. Understand branching, merging, pull requests, and how to use platforms like GitHub or GitLab. All your code, scripts, and infrastructure definitions will live in git.
 
 
-
 ### Phase 1: AWS Fundamentals – The Core Building Blocks
 
 Now you're ready for AWS. This phase is about understanding the most common, foundational services.

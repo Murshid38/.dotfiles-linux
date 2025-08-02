@@ -1,0 +1,142 @@
+ 1 mile - 1.6 km
+1 gallon - 3.78 l
+
+non electric cars runs on Internal Combustion Engines (ICE).
+EVs on the other hand mostly use induction engines. which has stator and a rotor.                                
+
+engines are often in 4, 6, 8 cylinders. within each cylinders are pistons.
+each piston moves up and down, resulting in crankshaft rotating in rotary motion. this drives the wheels.
+
+but what powers the up and down piston movement -> combustion.
+
+when piston lowers  air and fuel are sprayed in to the piston room. and when it goes up it compresses the area. and in gasoline engine(petrol) engine a spark is introduced. it will ignite the gas. in diesel engines the compression alone creates a mini explosion. these combustion will increase temperature and pressures which forces the piston down. and cycle continues.
+
+the gas pedal (accelerator) controls the amount of fuel and air released in to the piston chambers. more fuel and air means more combustion. that means the crankshaft will rotate faster. resulting in more velocity.
+
+here we have to also understand much of the energy generated in combustion are wasted as heat.
+
+modern car engines shut off fuel injection when decelerating.
+
+* Roadmap
+
+### Stage 1: The Big Picture - The Main Systems of a Car
+
+Goal: To understand that a car is not one giant mystery, but a collection of about five major systems working together. If you know these five, you can start categorizing any problem you encounter.
+
+What to Learn:
+1.  The Engine (or Motor): Creates the power.
+2.  The Drivetrain: Gets the power to the wheels.
+3.  The Chassis: The frame that holds everything, including the systems that control the car's movement (steering, brakes, suspension).
+4.  The Electrical System: The car's "nervous system." Powers everything from the spark plugs to your radio.
+5.  Fluids & Climate Control: The lifeblood of the car (oil, coolant, fuel) and systems for passenger comfort.
+
+Recommended Resources:
+ Video: Start with a high-level animated overview. Search YouTube for "How a Car Works - The 5 Main Systems". The channels "Engineering Explained" and "The Engineering Mindset" are fantastic, but might be a bit dense for day one. A channel like "Donut Media" has a "Science Garage" series that is very accessible.
+ Reading: The website HowStuffWorks has excellent, easy-to-read articles on these basic concepts.
+
+---
+
+### Stage 2: The Heart - The Internal Combustion Engine (ICE)
+
+Goal: To understand the magic of how an engine turns fuel into force. This is the most fundamental concept.
+
+What to Learn:
+1.  The Four-Stroke Cycle: This is the absolute core of how most car engines work: Intake, Compression, Power (Combustion), Exhaust. Memorize and understand this cycle.
+2.  Key Engine Components: Learn the role of the main parts:
+     Pistons, Cylinders, Crankshaft (turn the up-and-down motion into rotation).
+     Camshaft, Valves (let the air/fuel in and exhaust out).
+     Spark Plug (ignites the mixture).
+
+Recommended Resources:
+ Video (Essential): Search YouTube for "Four-Stroke Engine Animation." This visual representation is the best way to learn it. Engineering Explained's video on this is legendary.
+ Book: How Cars Work by Tom Newton. It's a beautifully illustrated book designed for exactly this purpose.
+
+---
+
+### Stage 3: The Power Delivery - The Drivetrain
+
+Goal: To understand how the engine's spinning force gets to the wheels to make the car move at different speeds.
+
+What to Learn:
+1.  Transmission (Gearbox): Why do we need gears? Learn the difference between an Automatic Transmission (uses a torque converter) and a Manual Transmission (uses a clutch).
+2.  The Rest of the Path: Learn the function of the Driveshaft, Differential (a genius invention that lets wheels spin at different speeds when turning), and Axles.
+
+Recommended Resources:
+ Video: Search for "How a Manual Transmission Works" and "How a Differential Works". There's a famous 1937 Chevrolet video on the differential that is still the best explanation ever made.
+ Resource: The animations on the "How a Car Works" website are brilliant for this.
+
+---
+
+### Stage 4: Control & Comfort - The Chassis
+
+Goal: To understand the systems you interact with every second you drive.
+
+What to Learn:
+1.  Braking System: How pressing a pedal stops a 1.5-ton vehicle. Learn about disc brakes, brake pads, calipers, and brake fluid (hydraulics).
+2.  Suspension System: How the car stays stable and comfortable over bumps. Learn about springs and shock absorbers (dampers).
+3.  Steering System: How turning the wheel turns the car. Learn about the rack and pinion mechanism.
+
+Recommended Resources:
+ Video: The channel ChrisFix is the undisputed king of practical, DIY car repair. His videos on changing brakes or suspension will teach you how the components work in a real-world context. Even if you don't plan to do the work yourself, watching it is incredibly insightful.
+
+---
+
+### Stage 5: The Life Support - Electrical & Fluids
+
+Goal: To understand the background systems that keep the engine and other components running safely.
+
+What to Learn:
+1.  The Starting & Charging Circuit: The relationship between the Battery (stores power), Alternator (generates power when the engine is running), and Starter Motor (cranks the engine).
+2.  The Cooling System: Why this is critical. Learn about the Radiator, Coolant (Antifreeze), Water Pump, and Thermostat.
+3.  Lubrication: The role of Engine Oil. This is the single most important fluid in your car.
+
+Recommended Resources:
+ Your Car's Owner's Manual: This is an underrated resource! It will show you where to check these fluids and what the warning lights on your dashboard mean.
+ Video: Search for "How a Car's Cooling System Works" and "How the Charging System Works."
+
+---
+
+### Stage 6: The Modern Brain - ECU and Sensors
+
+Goal: To get a basic grasp of how modern cars use computers.
+
+What to Learn:
+1.  The ECU (Engine Control Unit): The "brain" of the car that takes information from sensors to manage the engine and other systems.
+2.  Key Sensors: You don't need to know all of them, but understand the concept. The ECU uses sensors (like Oxygen sensors, Mass Airflow sensors) to make decisions.
+3.  OBD-II Port: The port (usually under the steering wheel) where mechanics (or you!) can plug in a scanner to read error codes from the ECU. This is the starting point for modern diagnostics.
+
+Recommended Resources:
+ OBD-II Scanner: For around LKR 5,000-10,000, you can buy a simple Bluetooth OBD-II scanner that connects to an app on your phone. It's a fantastic tool for learning what your car is thinking.
+ Video: Search for "What is an ECU?" and "How to use an OBD-II Scanner."
+
+### Your Journey & Local Sri Lankan Context
+
+ Be Patient: Don't try to learn this all in one weekend. Spend a week on each stage. Watch a few videos, do some reading, and then think about it while you're driving.
+ Get Your Hands Dirty (Safely): Start small. Learn to check your own oil, top up your washer fluid, and check your tire pressure. This builds confidence.
+ Focus on Your Car: Since the car market in Sri Lanka is dominated by reliable Japanese brands (Toyota, Honda, Suzuki, Nissan), you can find a massive amount of information online specific to your model.
+ Talk to Mechanics: When you get your car serviced, don't be afraid to ask your local mechanic simple questions. "What does that part do?" "Why did it fail?" Good mechanics are often happy to share knowledge.
+
+This roadmap will take you from a curious driver to someone who truly understands their vehicle. Enjoy the journey!
+
+* Channels
+
+https://www.youtube.com/@Donut
+https://www.youtube.com/@EngineeringExplained
+https://www.youtube.com/playlist?list=PLWv9VM947MKiRM6XNyXWFNj4Petwas06q
+
+* Refer
+
+https://youtu.be/wq6nRe2Lku0 - Gasoline - How it works | Science Garage | Donut Media
+https://auto.howstuffworks.com/auto-parts/towing/towing-capacity/information/torque-converter.htm
+https://www.youtube.com/watch?v=ZQvfHyfgBtA - How a Car Engine Works
+https://www.youtube.com/watch?v=JOLtS4VUcvQ - Spinning Levers - How A Transmission Works (1936)
+https://www.youtube.com/watch?v=yYAw79386WI - Around The Corner - How Differential Steering Works (1937)
+https://www.howacarworks.com/basics
+https://www.youtube.com/watch?v=UlbFFq60Tec How to Replace Front Brakes, Pads and Rotors
+https://www.youtube.com/watch?v=mQ2fJ_aM_T0
+https://www.youtube.com/watch?v=JQLkiErH9x4 How A Car's Cooling System Works
+https://www.youtube.com/watch?v=V7inC4lOpGs How Car Cooling System Works
+https://www.youtube.com/watch?v=nuLl_Z9_T9E ALTERNATORS & BATTERIES | How They Work
+https://www.youtube.com/watch?v=jdSKlg80DjU How Alternators Work - Automotive Electricity Generator
+https://www.youtube.com/watch?v=C8ZuE-ttMoA What is an ECU? Car, SUV and Truck Computer Acronyms Explained!
+https://www.youtube.com/watch?v=h9-6dkjMmQ4 How to Use an OBD-II Scan Tool

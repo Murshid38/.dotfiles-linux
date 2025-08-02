@@ -1,3 +1,7 @@
+# delete old crash dumps
+
+sudo rm /var/crash/*
+
 # How to install font in linux
 
 move the *.ttf files to /usr/share/fonts (for system wide installation).

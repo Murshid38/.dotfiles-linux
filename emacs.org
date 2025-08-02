@@ -26,7 +26,7 @@ even from isearch or isearch regexp, we can feed the results of the isearch to a
 
 M-m back-to-indentation
 
-* shortcuts
+* Shortcuts
 M-t transpose words
 C-t transpose characters
 C-x C-t transpose lines
@@ -95,3 +95,13 @@ https://www.youtube.com/@mzamansky
 * Videos
 
 Emacs: search and replace basics https://www.youtube.com/watch?v=f2mQXNnChwc - 21 mins
+
+* Help
+
+You can get to the elisp tutorial within emacs by typing the following: C-h i d m emacs lisp intro RET
+You can get to the elisp manual within Emacs by typing the following: C-h i d m elisp RET
+You can get to the Emacs manual within Emacs by typing the following: C-h i d m emacs RET
+
+C-h v - for help regarding variables
+C-h f - for help regarding functions
+C-h k - for help regarding keybindings
