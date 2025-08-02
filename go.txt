@@ -1,6 +1,6 @@
-track and manage dependencies through our codes own module
-our module defined by a go.mod file, this file tracks modules that provide us packages.
-
 use go mod init path (path is repository location where our code will be kept, and must be where others can download it e.g. github.com/mymodule)
 
 package "main" -> declares a main package. a package is a way to group functions. and it's made up of all the files in the same directory.
+
+track and manage dependencies through our codes own module
+our module defined by a go.mod file, this file tracks modules that provide us packages.
