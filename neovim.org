@@ -1,0 +1,15 @@
+* Plugins
+
+https://github.com/windwp/windline.nvim - clone in to ~/.config/nvim/pack/vendor/start
+https://github.com/folke/tokyonight.nvim - clone in to ~/.config/nvim/pack/colors/start
+https://github.com/folke/plenary.nvim - clone in to ~/.config/nvim/pack/vendor/start (dependency for telescope)
+https://github.com/nvim-telescope/telescope.nvim - clone in to ~/.config/nvim/pack/vendor/start
+https://github.com/nvim-telescope/telescope-file-browser.nvim - clone in to ~/.config/nvim/pack/vendor/start
+https://github.com/ThePrimeagen/harpoon - clone in to ~/.config/nvim/pack/vendor/start
+
+:helptags ALL - browse docs e.g. :help windline
+
+cd ~/.config/nvim/pack/vendor/start/plenary.nvim && git pull
+cd ~/.config/nvim/pack/vendor/start/telescope.nvim && git pull
+
+can consider running above commands too to update

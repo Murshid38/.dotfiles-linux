@@ -1,0 +1,196 @@
+* update and upgrade
+
+sudo nix-channel --update
+sudo nix-channel switch --upgrade ??
+sudo nixos-rebuild switch
+
+To install **Google Chrome** and **Emacs** on NixOS, you can use either a system-wide configuration via `configuration.nix` or a per-user approach using Home Manager.
+
+---
+
+## ⭐ 1. Google Chrome (Unfree Package)
+
+Google Chrome is an *unfree* package, so you must explicitly allow unfree packages in your NixOS configuration.
+
+### ✅ In `/etc/nixos/configuration.nix`:
+
+```nix
+nixpkgs.config = {
+  allowUnfree = true;
+};
+
+environment.systemPackages = with pkgs; [
+  brave
+  vim
+  git
+  kitty
+  google-chrome
+];
+```
+
+Then apply changes:
+
+```bash
+sudo nixos-rebuild switch
+```
+
+This ensures Chrome is installed system-wide and managed declaratively ([Unix & Linux Stack Exchange][1]).
+
+#### Optional: Use the `browser-previews` flake
+
+If you want the most up-to-date Chrome builds (stable, beta, dev), you can use the `nix-community/browser-previews` flake:
+
+* Add the flake as input in your `flake.nix`
+* Then include in `configuration.nix`:
+
+```nix
+environment.systemPackages = with inputs.browser-previews.packages.${pkgs.system}; [
+  google-chrome
+];
+```
+
+You’ll still need `allowUnfree = true;` ([GitHub][2], [Jorel Ali][3]).
+
+---
+
+## 📝 2. Emacs Installation
+
+### A) Basic installation
+
+#### In `configuration.nix`:
+
+```nix
+environment.systemPackages = with pkgs; [
+  emacs            # or emacs-gtk for GTK version
+];
+services.emacs.enable = true;      # Optional — starts Emacs as a daemon
+services.emacs.package = pkgs.emacs;
+```
+
+#### Or via Home Manager:
+
+```nix
+programs.emacs = {
+  enable = true;
+  package = pkgs.emacs;  # or pkgs.emacs-gtk
+};
+```
+
+This makes Emacs available globally, and optionally sets it as the default editor ([NixOS Wiki][4]).
+
+---
+
+### B) Install Emacs with Extensions or Developer Builds using emacs-overlay
+
+For bleeding‑edge versions and better package customization:
+
+1. Add the overlay to `configuration.nix`:
+
+```nix
+nixpkgs.overlays = [
+  (import (builtins.fetchTarball {
+    url = "https://github.com/nix-community/emacs-overlay/archive/master.tar.gz";
+  }))
+];
+services.emacs.package = pkgs.emacs-unstable;  # or emacsGit
+services.emacs.enable = true;
+```
+
+This gives access to nightly Emacs builds and ELPA/MELPA packages ([GitHub][5]).
+
+2. Optional: To include packages via `use-package` and `emacsWithPackages`, many NixOS users import `emacs-overlay` akin to:
+
+```nix
+let
+  myEmacs = (pkgs.emacsPackagesGen pkgs.emacsGcc).emacsWithPackages (epkgs: [ epkgs.vterm ... ]);
+in {
+  environment.systemPackages = [ myEmacs ];
+}
+```
+
+or use a Home Manager `programs.emacs.extraPackages` setup ([Gist][6]).
+
+---
+
+## 🧩 Summary Table
+
+| Application     | Install method                                                             | Notes                                 |
+| --------------- | -------------------------------------------------------------------------- | ------------------------------------- |
+| Brave           | `configuration.nix`                                                        | Available in nixpkgs                  |
+| vim, git, kitty | `configuration.nix` or Home Manager                                        | Simple, declarative                   |
+| Google Chrome   | `allowUnfree = true` + `google-chrome`                                     | Unfree package, needs explicit enable |
+| Emacs           | `environment.systemPackages = [emacs]` or `programs.emacs` in Home Manager | Basic install                         |
+| Emacs overlay   | Add overlay + `emacs-unstable` or `emacsGit`                               | For new features / packages           |
+
+---
+
+## 🚀 Example `configuration.nix`
+
+```nix
+{ pkgs, ... }:
+{
+  nixpkgs.config.allowUnfree = true;
+
+  environment.systemPackages = with pkgs; [
+    vim
+    git
+    kitty
+    brave
+    google-chrome
+    emacs
+  ];
+
+  services.emacs = {
+    enable = true;
+    package = pkgs.emacs;
+  };
+
+  # Optional overlay for Emacs unstable build:
+  nixpkgs.overlays = [
+    (import (builtins.fetchTarball {
+      url = "https://github.com/nix-community/emacs-overlay/archive/master.tar.gz";
+    }))
+  ];
+  # To use unstable:
+  # services.emacs.package = pkgs.emacs-unstable;
+}
+```
+
+Apply with:
+
+```bash
+sudo nixos-rebuild switch
+```
+
+---
+
+### 💡 Using Home Manager?
+
+You can similarly declare Brave, vim, git, kitty, chrome, and Emacs like so:
+
+```nix
+home.packages = with pkgs; [
+  vim
+  git
+  kitty
+  brave
+  google-chrome
+  emacs
+];
+
+programs.emacs = {
+  enable = true;
+  package = pkgs.emacs-gtk;
+};
+```
+
+---
+
+Need help configuring Emacs packages or command-line flags for Chrome/Brave (e.g. wayland support or extension management)? Just ask!
+
+[1]: https://unix.stackexchange.com/questions/429765/howto-install-google-chrome-in-nixos?utm_source=chatgpt.com "Howto Install google chrome in nixos?"
+[2]: https://github.com/nix-community/browser-previews?utm_source=chatgpt.com "browser-previews flake for NixOS users"
+[3]: https://jorel.dev/NixOS4Noobs/installingprogs.html?utm_source=chatgpt.com "Installing programs - NixOS4Noobs"
+[4]: https://wiki.nixos.org/wiki/Emacs?utm_source=chatgpt.com "Emacs - NixOS Wiki"
+[5]: https://github.com/nix-community/emacs-overlay?utm_source=chatgpt.com "nix-community/emacs-overlay"
+[6]: https://gist.github.com/mjlbach/179cf58e1b6f5afcb9a99d4aaf54f549?utm_source=chatgpt.com "Installing gccEmacs (native-comp) with Nix"

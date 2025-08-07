@@ -76,3 +76,9 @@ SELinux or AppArmor
 
 /var/log/packages/ ?
 ls /var/log/packages/ | grep -E 'mysql|mariadb'
+
+* Fonts
+
+** Updating Fonts
+
+fc-cache -f -v

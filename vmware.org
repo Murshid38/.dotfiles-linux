@@ -1,0 +1,13 @@
+sudo vmware-modconfig --console --install-all
+
+vmrun -T ws start "/full/path/to/nixos.vmx" nogui
+
+| Action           | Command                                      |
+| ---------------- | -------------------------------------------- |
+| Stop (graceful)  | `vmrun -T ws stop "/path/to/nixos.vmx" soft` |
+| Force stop       | `vmrun -T ws stop "/path/to/nixos.vmx" hard` |
+| Suspend          | `vmrun -T ws suspend "/path/to/nixos.vmx"`   |
+| Reset            | `vmrun -T ws reset "/path/to/nixos.vmx"`     |
+| List running VMs | `vmrun list`                                 |
+
+sudo systemctl start vmware-workstation
