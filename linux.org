@@ -82,3 +82,8 @@ ls /var/log/packages/ | grep -E 'mysql|mariadb'
 ** Updating Fonts
 
 fc-cache -f -v
+
+* File System
+
+/etc - host specific system wide configuration files(user configurations, network configurations, service configuration...)
+/etc/hosts - local hostname to IP mapping

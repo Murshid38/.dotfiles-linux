@@ -7,6 +7,24 @@ https://github.com/nvim-telescope/telescope.nvim - clone in to ~/.config/nvim/pa
 https://github.com/nvim-telescope/telescope-file-browser.nvim - clone in to ~/.config/nvim/pack/vendor/start
 https://github.com/ThePrimeagen/harpoon - clone in to ~/.config/nvim/pack/vendor/start
 
+git clone --depth 1 https://github.com/neovim/nvim-lspconfig "$HOME/.config/nvim/pack/vendor/start/nvim-lspconfig"
+git clone --depth 1 https://github.com/williamboman/mason.nvim "$HOME/.config/nvim/pack/vendor/start/mason.nvim"
+git clone --depth 1 https://github.com/williamboman/mason-lspconfig.nvim "$HOME/.config/nvim/pack/vendor/start/mason-lspconfig.nvim"
+git clone --depth 1 https://github.com/hrsh7th/nvim-cmp "$HOME/.config/nvim/pack/vendor/start/nvim-cmp"
+git clone --depth 1 https://github.com/hrsh7th/cmp-nvim-lsp "$HOME/.config/nvim/pack/vendor/start/cmp-nvim-lsp"
+git clone --depth 1 https://github.com/hrsh7th/cmp-buffer "$HOME/.config/nvim/pack/vendor/start/cmp-buffer"
+git clone --depth 1 https://github.com/hrsh7th/cmp-path "$HOME/.config/nvim/pack/vendor/start/cmp-path"
+git clone --depth 1 https://github.com/L3MON4D3/LuaSnip "$HOME/.config/nvim/pack/vendor/start/LuaSnip"
+git clone --depth 1 https://github.com/saadparwaiz1/cmp_luasnip "$HOME/.config/nvim/pack/vendor/start/cmp_luasnip"
+git clone --depth 1 https://github.com/nvim-tree/nvim-tree.lua "$HOME/.config/nvim/pack/vendor/start/nvim-tree.lua"
+git clone --depth 1 https://github.com/nvim-treesitter/nvim-treesitter "$HOME/.config/nvim/pack/vendor/start/nvim-treesitter"
+git clone --depth 1 https://github.com/stevearc/conform.nvim "$HOME/.config/nvim/pack/vendor/start/conform.nvim"
+git clone --depth 1 https://github.com/mfussenegger/nvim-lint "$HOME/.config/nvim/pack/vendor/start/nvim-lint"
+git clone --depth 1 https://github.com/lewis6991/gitsigns.nvim "$HOME/.config/nvim/pack/vendor/start/gitsigns.nvim"
+git clone --depth 1 https://github.com/mfussenegger/nvim-dap "$HOME/.config/nvim/pack/vendor/start/nvim-dap"
+git clone --depth 1 https://github.com/rcarriga/nvim-dap-ui "$HOME/.config/nvim/pack/vendor/start/nvim-dap-ui"
+git clone --depth 1 https://github.com/NeogitOrg/neogit "$HOME/.config/nvim/pack/vendor/start/neogit"
+
 :helptags ALL - browse docs e.g. :help windline
 
 cd ~/.config/nvim/pack/vendor/start/plenary.nvim && git pull

@@ -1,0 +1,7 @@
+* changing a value in several files at once
+
+sed -i 's/OLD_VALUE/NEW_VALUE/g' *.txt
+
+* appending a line to multiple files
+
+sed -i '$a\Footer text' -- *.txt

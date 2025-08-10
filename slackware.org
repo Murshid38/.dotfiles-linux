@@ -37,6 +37,7 @@ simply by enabling execution of rc file we enables start on boot.
 check if sshd is running -> ps aux | grep sshd
 check if it's listening in the configured port mostly 22 -> netstat -tulnp | grep sshd    
 
+apache(or apache2) and httpd are same things. just naming is different according to distribution.  
 
 * Slackbuilds
 
@@ -79,3 +80,17 @@ ls -ld /srv/httpd/htdocs/buggy_ecommerce_site // find the group this directory b
 
 sudo chgrp -R www-data /srv/httpd/htdocs/buggy_ecommerce_site
 sudo chown -R murshid:apache /srv/httpd/htdocs/buggy_ecommerce_site
+
+* how slackware works
+
+it tries to stay close to upstream projects. 
+in OSS "upstream" means where the original/source software is developed. for example linux kernal.
+distribution are downstream projects where they patch or reconfigure the upstream project linux kernal.
+so slackware tries to avoid patching or extra customizations to stay close to upstream projects unless it's necessary.
+
+“Packages only deviate from upstream defaults if absolutely necessary … you end up learning the components of a GNU/Linux system in their ‘natural’ state”
+
+benefits of staying close to upstream projects:
+Predictability & Transparency: You see the software as upstream developers released it, making it easier to understand, debug, or extend.
+Easier Upgrades: Without heavy downstream patches, merging in new upstream versions tends to be smoother.
+Educational: Slackware gives you a clearer window into how GNU/Linux components behave at their core—valuable for learning and system administration.
