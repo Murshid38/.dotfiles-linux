@@ -1,2 +1,6 @@
+RPM based
+
 etc4 /boot
 brtfs /home and /
+
+

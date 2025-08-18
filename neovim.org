@@ -25,9 +25,49 @@ git clone --depth 1 https://github.com/mfussenegger/nvim-dap "$HOME/.config/nvim
 git clone --depth 1 https://github.com/rcarriga/nvim-dap-ui "$HOME/.config/nvim/pack/vendor/start/nvim-dap-ui"
 git clone --depth 1 https://github.com/NeogitOrg/neogit "$HOME/.config/nvim/pack/vendor/start/neogit"
 
+clone https://github.com/mxsdev/nvim-dap-vscode-js
+
 :helptags ALL - browse docs e.g. :help windline
 
 cd ~/.config/nvim/pack/vendor/start/plenary.nvim && git pull
 cd ~/.config/nvim/pack/vendor/start/telescope.nvim && git pull
 
 can consider running above commands too to update
+
+for JS/TS debug adapter (vscode-js-debug; build it after cloning):
+git clone https://github.com/microsoft/vscode-js-debug.git ~/.config/nvim/pack/vendor/start/vscode-js-debug
+cd ~/.config/nvim/pack/vendor/start/vscode-js-debug
+npm install
+npm run compile
+cd -
+
+if not working
+
+cd ~/.config/nvim/pack/vendor/start/vscode-js-debug
+npm install  # If not already done
+npx gulp vsDebugServerBundle
+mv dist out
+cd -
+
+also install js-debug-adapter from Mason
+
+Mason installed
+    ◍ css-lsp cssls
+    ◍ html-lsp html
+    ◍ js-debug-adapter
+    ◍ prisma-language-server prismals
+    ◍ sqlls
+    ◍ tailwindcss-language-server tailwindcss
+    ◍ typescript-language-server ts_ls
+
+
+also install ts-node
+
+{
+  "compilerOptions": {
+    "sourceMap": true,
+    "module": "CommonJS",
+    "target": "ESNext",
+    "esModuleInterop": true
+  }
+}

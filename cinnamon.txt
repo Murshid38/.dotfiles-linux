@@ -1,0 +1,5 @@
+Default Font Sans Regular
+Desktop Font Noto Sans Regular
+Document Font Advaita Sans Regular/Ubuntu Regular
+Monospace Font Advaita Mono Regular/Ubuntu Mono Regular
+Window Title Font Sans Bold

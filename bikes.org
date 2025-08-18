@@ -1,0 +1,54 @@
+* why 1st down rest up gear pattern??
+
+1. when we try to stop in a hurry while repeatedly lowering the gear, we will naturally end up in 1st gear not neutral. because it's the one that in the end. this way we won't lose power.
+2. when starting from neutral, we won't end up in 2nd gear as opposed to 1st gear. because 1st gear always 1 down from neutral.
+3. when decelerating neutral being in between 1st and 2nd gear with deliberate half click ensures we only go to neutral when we really intended to use it.
+
+* what happens when clutch is pulled in? 
+
+disconnects the engine from transmission and wheels. (so the engine runs but the wheels won't get power)
+
+* Important to remember
+
+1. there are two types of braking, engine braking(interally applies when we release the throttle) and friction braking(brake pads and levers). Engine RPM is lower in higher gears compared to same in speed in less gears. that means less friction/engine resistance when we release the throttle. in higher gears braking can be softer and less effective. because engine resistance is less in higher gears compared to same speed in less gears. so in lower gears releasing the throttle noticeably slows us down then in higher gears.
+
+utilizing the engine braking(using lower gears and releasing throttle where we know we might use braking a lot) also reduces our brake pads wearing off(because we are taking load off them) 
+
+in neutral we don't have engine braking! 
+
+2. keep the bike in first gear when stopped and when ready to take off soon. keeping clutch pulled in when stopped is not a big issue(modern bikes uses wet clutches so clutch wear is not a problem). 
+
+3. pulling in the clutch and applying brake won't shut off the engine. since whenever clutch is pulled in engine is disconnected from the wheels. 
+
+4. clutch lever pulled in - clutch disengaged status, clutch lever not pulled in - clutch engaged status
+
+5. when going for a stop change to lower gears(try 1st) and pull in the clutch and use brakes.
+
+6. stopping the bike without clutched pulled in will stall the bike and engine will shut off. because engine needs a minimum amount of RPM to keep running.
+
+7. always brake when bike is straight not leaned over.
+
+8. don't rely on one brake. mostly apply both brakes 70% front(gives most power) and 30% rear(prevent from rear wheel lifting)
+
+* Braking
+
+drum or disc(modern ones) brakes.
+rear brake is less sensitive so we can apply a bit more pressure.
+
+Normal Stops (e.g., traffic lights, straight road)High (70-80% of effort)Medium (20-30% for balance)Front provides most power; rear prevents the rear wheel from lifting. Use both progressively.
+
+Emergency/Panic StopsVery High (squeeze firmly but progressively)Low to Medium (apply lightly to avoid skid)Weight shifts forward, making front most effective. If no ABS, modulate to prevent lockup.
+
+Low-Speed Maneuvers (e.g., parking lot, U-turns)Low (use sparingly)High (main control)Rear helps with stability at slow speeds without upsetting balance. Front can cause the bike to dive or tip.
+
+Turns or Cornering (Trail Braking)Medium (light squeeze entering turn)High (drag lightly for control)Rear maintains traction in leans; front can be used gently to adjust speed mid-turn on advanced rides.
+
+Wet or Slippery RoadsMedium (progressive and gentle)Low (easy to skid)Reduce overall pressure; prioritize front but watch for hydroplaning. ABS helps here.
+
+Downhill or Loaded BikeHighMedium to HighFront for power, rear to prevent speeding up. Use engine braking (downshift) too.
+ 
+* refer
+
+https://www.youtube.com/watch?v=SDWBMXrMKNc&t=5s - bike stalling
+
+

@@ -1,0 +1,22 @@
+RPM based
+
+sudo zypper refresh
+sudo zypper dup
+
+sudo zypper install -t pattern cinnamon
+sudo zypper install cinnamon-applet-mintmenu cinnamon-control-center gnome-terminal
+
+sudo zypper install gdm
+sudo systemctl enable gdm
+sudo systemctl set-default graphical.target
+
+sudo snapper list
+sudo snapper diff 1..2
+sudo snapper rollback 1
+
+what guix won't offer in tumbleweed?
+1. System services (systemd units)
+2. Kernel settings and modules
+3. Firewall configuration
+4. System-wide settings in /etc
+5. Any packages installed with zypper

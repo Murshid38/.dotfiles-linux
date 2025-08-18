@@ -26,12 +26,17 @@ even from isearch or isearch regexp, we can feed the results of the isearch to a
 
 M-m back-to-indentation
 
+numeric arguments are set to M-0 to M-9, C-0 to C-9, C-M-0 to C-M-9 or press C-u and the number
+negative argument set to M--, C--, C-M-- to work with last words, characters, phrases....
+
 * Shortcuts
 M-t transpose words
 C-t transpose characters
 C-x C-t transpose lines
+
 M-; comment
 yank-rectangle C-x r y
+string-rectangle C-x r t
 
 Rename means moving and vice versa
 M-h for selecting the para
