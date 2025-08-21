@@ -1,0 +1,55 @@
+sudo guix pull always before
+sudo guix system reconfigure /etc/config.scm
+
+guix graph open-vm-tools
+
+You can check the health of the connection to the main substitute server by running:
+guix challenge --substitute-urls=https://ci.guix.gnu.org
+
+Before committing to a long build, you can see what Guix plans to do:
+guix system reconfigure /etc/config.scm --dry-run
+
+backup mirror
+guix pull --url=https://codeberg.org/guix/guix-mirror
+
+run 'guix pull' as root user first
+
+(use-modules (gnu)
+             (gnu services)
+             (gnu services desktop) ; <--- ADD THIS MODULE
+             (gnu services networking)
+             (gnu services xorg)
+             (nongnu packages linux)
+             (nongnu services linux))
+
+mkdir -p /root/.config/guix
+nano /root/.config/guix/channels.scm
+
+add the below there and 'guix pull'
+
+;; This is the recommended channels.scm content for Guix and Nonguix.
+;; It includes the 'introduction' for channel authentication.
+
+(list (channel
+        (name 'guix)
+        (url "https://git.savannah.gnu.org/git/guix.git")
+        (introduction
+          (make-channel-introduction
+            "9edb3f66fd807b096b48283debdcddccfea34bad"
+            (openpgp-fingerprint
+              "BBB0 2DDF 2CEA F6A8 0A1D  E64E 9A2A A060 2153 5529"))))
+      (channel
+        (name 'nonguix)
+        (url "https://gitlab.com/nonguix/nonguix")
+        (introduction
+          (make-channel-introduction
+            "897c1a470da759236cc11798f4e0a5f7d4d59fbc"
+            (openpgp-fingerprint
+              "2A39 3FFF 68F4 EF7A 3D29  12AF 6F51 20A0 22FB B2D5")))))
+
+
+source /root/.config/guix/current/etc/profile
+herd restart guix-daemon
+
+guix search hyprland
+guix install hyprland

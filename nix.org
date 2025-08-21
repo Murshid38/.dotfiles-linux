@@ -1,7 +1,7 @@
 * update and upgrade
 
 sudo nix-channel --update
-sudo nix-channel switch --upgrade ??
+sudo nixos-rebuild switch --upgrade
 sudo nixos-rebuild switch
 
 To install **Google Chrome** and **Emacs** on NixOS, you can use either a system-wide configuration via `configuration.nix` or a per-user approach using Home Manager.
@@ -194,3 +194,7 @@ Need help configuring Emacs packages or command-line flags for Chrome/Brave (e.g
 [4]: https://wiki.nixos.org/wiki/Emacs?utm_source=chatgpt.com "Emacs - NixOS Wiki"
 [5]: https://github.com/nix-community/emacs-overlay?utm_source=chatgpt.com "nix-community/emacs-overlay"
 [6]: https://gist.github.com/mjlbach/179cf58e1b6f5afcb9a99d4aaf54f549?utm_source=chatgpt.com "Installing gccEmacs (native-comp) with Nix"
+
+* VM
+
+virtualisation.vmware.guest.enable = true;
